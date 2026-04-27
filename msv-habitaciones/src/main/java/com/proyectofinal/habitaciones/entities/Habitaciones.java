@@ -28,7 +28,7 @@ public class Habitaciones {
 	private Integer numeroHabitacion;
 	
 	@Column(name = "TIPO", nullable = false, length = 20)
-	private String tipo;
+	private String tipoHabitacion;
 	
 	@Column(name = "PRECIO", nullable = false)
 	private BigDecimal precio;
