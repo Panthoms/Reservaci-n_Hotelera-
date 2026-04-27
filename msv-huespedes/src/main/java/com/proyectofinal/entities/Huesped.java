@@ -1,4 +1,4 @@
-package com.proyectofinal.huespedes.entities;
+package com.proyectofinal.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
