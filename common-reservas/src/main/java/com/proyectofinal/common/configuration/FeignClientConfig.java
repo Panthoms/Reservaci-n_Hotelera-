@@ -1,4 +1,4 @@
-package com.josealberto.commons.configuration;
+package com.proyectofinal.common.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package com.josealberto.commons.exceptions;
+package com.proyectofinal.common.exceptions;
 
-import com.josealberto.commons.dto.ErrorResponse;
+import com.proyectofinal.common.dto.ErrorResponse;
 
 import feign.FeignException;
 import feign.RetryableException;

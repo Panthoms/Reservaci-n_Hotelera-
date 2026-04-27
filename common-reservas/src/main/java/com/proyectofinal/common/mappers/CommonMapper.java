@@ -1,4 +1,4 @@
-package com.josealberto.commons.mappers;
+package com.proyectofinal.common.mappers;
 
 import org.springframework.stereotype.Component;
 

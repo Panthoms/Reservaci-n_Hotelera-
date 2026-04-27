@@ -1,4 +1,4 @@
-package com.josealberto.commons.enums;
+package com.proyectofinal.common.enums;
 
 public enum EstadoRegistro {
 	ACTIVO,

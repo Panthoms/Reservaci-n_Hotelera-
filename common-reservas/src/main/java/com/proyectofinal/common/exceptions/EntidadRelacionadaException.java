@@ -1,4 +1,4 @@
-package com.josealberto.commons.exceptions;
+package com.proyectofinal.common.exceptions;
 
 public class EntidadRelacionadaException extends RuntimeException {
     /**

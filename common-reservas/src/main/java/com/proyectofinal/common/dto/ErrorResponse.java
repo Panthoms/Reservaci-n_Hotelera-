@@ -1,4 +1,4 @@
-package com.josealberto.commons.dto;
+package com.proyectofinal.common.dto;
 
 public record ErrorResponse(
         int codigo,
