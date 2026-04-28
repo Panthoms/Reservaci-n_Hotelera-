@@ -33,18 +33,15 @@ public class Habitaciones {
 	@Column(name = "PRECIO", nullable = false)
 	private BigDecimal precio;
 
-	@Column(name = "CAPACIDAD")
+	@Column(name = "CAPACIDAD", nullable = false)
 	private Integer capacidad;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ESTADO_HABITACION", nullable = false)
 	private EstadoHabitacion estadoHabitacion;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "ESTADO_REGISTRO", nullable = false)
 	private EstadoRegistro estadoRegistro;
 
-
-	
-	
-	
-	
 }
