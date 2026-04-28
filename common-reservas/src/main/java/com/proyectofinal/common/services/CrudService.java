@@ -8,7 +8,7 @@ public interface CrudService<RQ, RS> {
 
     RS obtenerPorId(Long id);
 
-    RS registrar(RQ rq);
+    RS registrar(RQ request);
 
     RS actualizar(RQ request, Long id);
 
