@@ -28,6 +28,19 @@ public class HuespedMapper implements CommonMapper<HuespedRequest, HuespedRespon
 
     @Override
     public HuespedResponse entidadAResponse(Huesped entidad) {
-        return null;
+
+        if (entidad == null) return null;
+
+        return new HuespedResponse(
+                entidad.getId(),
+                String.join(" ",
+                        entidad.getNombre(),
+                        entidad.getApellidoPaterno(),
+                        entidad.getApellidoMaterno()),
+                entidad.getEmail(),
+                entidad.getTelefono(),
+                entidad.getTipoDocumento(),
+                entidad.getNumeroDocumento(),
+                entidad.getNacionalidad());
     }
 }
