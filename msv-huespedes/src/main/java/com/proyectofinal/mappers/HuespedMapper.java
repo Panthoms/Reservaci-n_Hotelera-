@@ -2,6 +2,7 @@ package com.proyectofinal.mappers;
 
 import com.proyectofinal.common.dto.HuespedRequest;
 import com.proyectofinal.common.dto.HuespedResponse;
+import com.proyectofinal.common.enums.EstadoRegistro;
 import com.proyectofinal.common.mappers.CommonMapper;
 import com.proyectofinal.entities.Huesped;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class HuespedMapper implements CommonMapper<HuespedRequest, HuespedRespon
                 .tipoDocumento(request.tipoDocumento())
                 .numeroDocumento(request.numeroDocumento())
                 .nacionalidad(request.nacionalidad())
+                .estadoRegistro(EstadoRegistro.ACTIVO)
                 .build();
     }
 
@@ -41,6 +43,7 @@ public class HuespedMapper implements CommonMapper<HuespedRequest, HuespedRespon
                 entidad.getTelefono(),
                 entidad.getTipoDocumento(),
                 entidad.getNumeroDocumento(),
-                entidad.getNacionalidad());
+                entidad.getNacionalidad(),
+                entidad.getEstadoRegistro().getDescription());
     }
 }

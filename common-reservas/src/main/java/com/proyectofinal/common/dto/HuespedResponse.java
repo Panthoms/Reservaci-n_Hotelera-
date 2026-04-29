@@ -7,6 +7,7 @@ public record HuespedResponse(
         String telefono,
         String tipoDocumento,
         String numeroDocumento,
-        String nacionalidad
+        String nacionalidad,
+        String estadoRegistro
 ) {
 }

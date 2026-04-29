@@ -51,11 +51,33 @@ public class HuespedServiceImpl implements HuespedService{
 
     @Override
     public HuespedResponse actualizar(HuespedRequest request, Long id) {
-        return null;
+        Huesped huesped = obtenerHuespedActivoOException(id);
+
+        validarActualizarUnicos(request, EstadoRegistro.ACTIVO,id);
+
+        huesped.actualizar(
+                request.nombre(),
+                request.apellidoPaterno(),
+                request.apellidoMaterno(),
+                request.email(),
+                request.telefono(),
+                request.tipoDocumento(),
+                request.numeroDocumento());
+
+        log.info("Huesped actualizado con éxito: {})" + id);
+
+        return huespedMapper.entidadAResponse(huesped);
     }
 
     @Override
     public void eliminar(Long id) {
+        log.info("Eliminando Huesped con id {} )" + id);
+        Huesped huesped = obtenerHuespedActivoOException(id);
+
+
+        huesped.setEstadoRegistro(EstadoRegistro.ELIMINADO);
+
+        log.info("Huesped con id {} ha sido eliminado)" + id);
 
     }
 
@@ -90,5 +112,26 @@ public class HuespedServiceImpl implements HuespedService{
         log.info("validando email por estado...");
         if (huespedRepository.existsByTelefonoAndEstadoRegistro(telefono, EstadoRegistro.ACTIVO))
             throw new IllegalArgumentException("Ya existe un medico con el telefono: " + telefono);
+    }
+
+    private void validarActualizarUnicos(HuespedRequest request, EstadoRegistro estados, Long id) {
+        log.info("validando actualizacion por estado...");
+        if (huespedRepository.existsByEmailIgnoreCaseAndEstadoRegistroAndIdNot(request.email(), EstadoRegistro.ACTIVO, id))
+            throw new IllegalArgumentException("Ya existe un huesped con el emial: " + request.email());
+
+        if (huespedRepository.existsByTelefonoAndEstadoRegistroAndIdNot(request.telefono(), EstadoRegistro.ACTIVO, id))
+            throw new IllegalArgumentException("Ya existe un huesped con el telefono: " + request.telefono());
+
+        if (huespedRepository.existsByTipoDocumentoAndIdNotAndEstadoRegistro(request.tipoDocumento(),id , EstadoRegistro.ACTIVO))
+            throw new IllegalArgumentException("Ya existe un huesped con el tipo de documento: " + request.telefono());
+
+        if (huespedRepository.existsByNumeroDocumentoAndIdNotAndEstadoRegistro(request.tipoDocumento(),id , EstadoRegistro.ACTIVO))
+            throw new IllegalArgumentException("Ya existe un huesped con el número de documento: " + request.telefono());
+
+    }
+
+    @Override
+    public HuespedResponse obtenerHuespedPorSinEstado(Long id) {
+        return null;
     }
 }
