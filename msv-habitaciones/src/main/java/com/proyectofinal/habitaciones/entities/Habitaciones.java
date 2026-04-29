@@ -44,4 +44,22 @@ public class Habitaciones {
 	@Column(name = "ESTADO_REGISTRO", nullable = false)
 	private EstadoRegistro estadoRegistro;
 
+
+	public void actualizar(Integer numeroHabitacion, String tipoHabitacion, BigDecimal precio, Integer capacidad) {
+		this.numeroHabitacion = numeroHabitacion;
+		this.tipoHabitacion = tipoHabitacion;
+		this.precio = precio;
+		this.capacidad = capacidad;
+	}
+
+	public void actualizarEstadoHabitacion(EstadoHabitacion estadoHabitacion){
+		if (estadoHabitacion == EstadoHabitacion.DISPONIBLE &&
+				this.getEstadoHabitacion() == EstadoHabitacion.OCUPADA)
+			throw new IllegalStateException(
+					"No se puede cambiar el estado de OCUPADA a DISPONIBLE directamente.");
+	}
+
+	public void eliminar() {
+		this.estadoRegistro = EstadoRegistro.ELIMINADO;
+	}
 }

@@ -3,6 +3,7 @@ package com.proyectofinal.common.dto;
 import java.math.BigDecimal;
 
 public record HabitacionResponse(
+        Long id,
         Integer numeroHabitacion,
         String tipoHabitacion,
         BigDecimal precio,
