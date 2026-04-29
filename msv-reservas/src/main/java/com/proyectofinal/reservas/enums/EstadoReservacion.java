@@ -1,4 +1,4 @@
-package com.proyectofinal.common.enums;
+package com.proyectofinal.reservas.enums;
 
 import com.proyectofinal.common.exceptions.RecursoNoEncontradoException;
 import lombok.AllArgsConstructor;
@@ -6,18 +6,18 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum EstadoHabitacion {
-    DISPONIBLE(1L, "HABITACION DISPONIBLE PARA USAR"),
-    OCUPADA(2L, "HABITACION EN ESTADO DE USO"),
-    LIMPIEZA(3L, "HABITACION EN ESTADO DELIMPIEZA"),
-    MANTENIMIENTO(4L, "HABITACIOEN EN MANTENIMIENTO");
+public enum EstadoReservacion {
+    CONFIRMAR(1L, "Reserva creada"),
+    EN_CURSO(2L, "Reserva creada"),
+    FINALIZADA(3L, "Reserva creada"),
+    CANCELADA(4L, "Reserva creada");
 
     private final Long codigo;
 
     private final String descripcion;
 
-    public static EstadoHabitacion obtenerHabitacionPorCodigo(Long codigo) {
-        for (EstadoHabitacion d : values()) {
+    public static EstadoReservacion obtenerDisponibilidadPorCodigo(Long codigo) {
+        for (EstadoReservacion d : values()) {
             if (d.codigo == codigo) {
                 return d;
             }
@@ -25,8 +25,8 @@ public enum EstadoHabitacion {
         throw new RecursoNoEncontradoException("Código de disponibilidad no válido: " + codigo);
     }
 
-    public static EstadoHabitacion obtenerHabitaciomnPorDescripcion(Long codigo) {
-        for (EstadoHabitacion estado : EstadoHabitacion.values()) {
+    public static EstadoReservacion obtenerDisponibilidadPorDescripcion(Long codigo) {
+        for (EstadoReservacion estado : EstadoReservacion.values()) {
             if (estado.getCodigo() == codigo) {
                 return estado;
             }
