@@ -42,6 +42,25 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public UsuarioResponse actualizar(String username, UsuarioRequest request) {
+
+        Usuario usuario = obtenerUsuarioActivoOException(username);
+
+        Set<Rol> roles = request.roles().stream().map(rol ->
+                rolRepository.findByNombre(rol).orElseThrow(() ->
+                        new NoSuchElementException("Rol " + rol + " no encontrado"))
+        ).collect(Collectors.toSet());
+
+        usuario.setUsername(request.username());
+        usuario.setPassword(passwordEncoder.encode(request.password()));
+        usuario.setRoles(roles);
+
+        usuario = usuarioRepository.save(usuario);
+        log.info("Usuario {} actualizado correctamente", username);
+        return usuarioMapper.entityToResponse(usuario);
+    }
+
+    @Override
     public UsuarioResponse registrar(UsuarioRequest request) {
         log.info("Buscando usuario {}", request.username());
         if (usuarioRepository.findByUsername(request.username()).isPresent()) {
@@ -66,5 +85,13 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .orElseThrow(() -> new NoSuchElementException("No se encontró el usuario: " + username));
         usuarioRepository.delete(usuario);
         return usuarioMapper.entityToResponse(usuario);
+    }
+
+    private Usuario obtenerUsuarioActivoOException(String username){
+
+        return usuarioRepository.findByUsername(username).orElseThrow(()->
+                new NoSuchElementException("Usuario no encontrado:  "+ username));
+
+
     }
 }
