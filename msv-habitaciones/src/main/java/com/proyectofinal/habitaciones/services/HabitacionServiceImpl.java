@@ -79,7 +79,7 @@ public class HabitacionServiceImpl implements HabitacionService{
     public void actualizarEstado(Long id, Long idEstadoHabitacion) {
         Habitaciones habitaciones = obtenerHabitacionOExcepction(id);
         log.info("Actualizando el estado de la habitación con id {}", id);
-        EstadoHabitacion estadoHabitacion = EstadoHabitacion.obtenerDisponibilidadPorCodigo(idEstadoHabitacion);
+        EstadoHabitacion estadoHabitacion = EstadoHabitacion.obtenerHabitacionPorCodigo(idEstadoHabitacion);
         habitaciones.actualizarEstadoHabitacion(estadoHabitacion);
         log.info("Estado de la habitacion {} actualizada correctamente {}", id);
     }
