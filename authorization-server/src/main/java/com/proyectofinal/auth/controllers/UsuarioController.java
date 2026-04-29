@@ -3,13 +3,7 @@ package com.proyectofinal.auth.controllers;
 import java.util.Set;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.josealberto.auth.dto.UsuarioRequest;
 import com.josealberto.auth.dto.UsuarioResponse;
@@ -28,6 +22,12 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<Set<UsuarioResponse>> listar() {
         return ResponseEntity.ok(usuarioService.listar());
+    }
+
+    @PutMapping("/{username}")
+    public ResponseEntity<UsuarioResponse> actualizar(@PathVariable String username,
+                                                      @Valid @RequestBody UsuarioRequest request) {
+        return ResponseEntity.ok(usuarioService.actualizar(username, request));
     }
 
     @PostMapping

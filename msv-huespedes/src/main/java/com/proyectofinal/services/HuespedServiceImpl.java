@@ -71,13 +71,14 @@ public class HuespedServiceImpl implements HuespedService{
 
     @Override
     public void eliminar(Long id) {
-        log.info("Eliminando Huesped con id {} )" + id);
-        Huesped huesped = obtenerHuespedActivoOException(id);
+        log.info("Eliminando (lógicamente) huésped con id: {}", id);
 
+        Huesped huesped = huespedRepository.findByIdAndEstadoRegistro(id, EstadoRegistro.ACTIVO)
+                .orElseThrow(() -> new RecursoNoEncontradoException("Huésped no encontrado"));
 
         huesped.setEstadoRegistro(EstadoRegistro.ELIMINADO);
-
-        log.info("Huesped con id {} ha sido eliminado)" + id);
+        huespedRepository.save(huesped);
+        log.info("Huésped con id: {} eliminado...", id);
 
     }
 
