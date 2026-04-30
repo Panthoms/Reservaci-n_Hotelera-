@@ -5,8 +5,8 @@ import java.util.Set;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.josealberto.auth.dto.UsuarioRequest;
-import com.josealberto.auth.dto.UsuarioResponse;
+import com.proyectofinal.auth.dto.UsuarioRequest;
+import com.proyectofinal.auth.dto.UsuarioResponse;
 import com.proyectofinal.auth.services.UsuarioService;
 
 import jakarta.validation.Valid;

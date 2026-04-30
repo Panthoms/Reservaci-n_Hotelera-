@@ -1,5 +1,6 @@
 package com.proyectofinal.reservas.entities;
 
+import com.proyectofinal.common.enums.EstadoRegistro;
 import com.proyectofinal.reservas.enums.EstadoReservacion;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,5 +35,40 @@ public class Reservas {
     @Column(name = "ESTADO_RESERVACION", nullable = false)
     @Enumerated(EnumType.STRING)
     EstadoReservacion estadoReservacion;
+
+    @Column(name = "ESTADO_REGISTRO", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private EstadoRegistro estadoRegistro;
+
+
+    public void actualizar(Long idHuesped, Long idHabitaciones, Date fechaIngreso, Date fechaSalida) {
+        this.puedeActualizar();
+        this.idHuesped = idHuesped;
+        this.idHabitaciones = idHabitaciones;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaSalida = fechaSalida;
+    }
+
+    private void puedeActualizar(){
+        if (!this.estadoReservacion.equals(EstadoReservacion.CONFIRMADA))
+                throw new IllegalStateException("La reservacion solo se puede actualizar en estado "
+                + EstadoReservacion.CONFIRMADA);
+    }
+
+    public void actualizarFechas(Date fechaSalida) {
+        this.puedeActualizarFechas();
+        this.fechaSalida = fechaSalida;
+    }
+
+    private void puedeActualizarFechas(){
+        if (!this.estadoReservacion.equals(EstadoReservacion.EN_CURSO))
+            throw new IllegalStateException("La reservacion solo se puede actualizar en estado "
+                + EstadoReservacion.EN_CURSO);
+    }
+
+    public void actualizarEstadoReservacion(EstadoReservacion nuevoEstadoReservacion){
+
+    }
+
 
 }

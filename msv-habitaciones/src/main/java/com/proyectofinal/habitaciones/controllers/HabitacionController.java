@@ -16,7 +16,7 @@ public class HabitacionController extends CommonController<HabitacionRequest, Ha
 
     @GetMapping("/id-habitacion/{id}")
     public ResponseEntity<HabitacionResponse> obtenerHabitacionSinEstado(
-            @PathVariable @Positive(message = "El id debe ser positivo") Long id
+                @PathVariable @Positive(message = "El id debe ser positivo") Long id
     ){
         return ResponseEntity.ok(service.optenerPorIdSinEstado(id));
     }

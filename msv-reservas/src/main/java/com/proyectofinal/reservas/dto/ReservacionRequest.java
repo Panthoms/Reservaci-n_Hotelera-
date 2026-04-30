@@ -1,7 +1,6 @@
 package com.proyectofinal.reservas.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proyectofinal.reservas.enums.EstadoReservacion;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -27,7 +26,7 @@ public record ReservacionRequest(
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
         Date fechaSalida,
 
-        @Positive(message = "El id del estado de la cita debe ser positivo")
+        @Positive(message = "El id del estado de la reservacion debe ser positivo")
         Long estadoReservacion
 ) {
 
