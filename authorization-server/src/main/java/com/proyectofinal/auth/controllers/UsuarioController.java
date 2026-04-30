@@ -25,8 +25,9 @@ public class UsuarioController {
     }
 
     @PutMapping("/{username}")
-    public ResponseEntity<UsuarioResponse> actualizar(@PathVariable String username,
-                                                      @Valid @RequestBody UsuarioRequest request) {
+    public ResponseEntity<UsuarioResponse> actualizar(
+            @PathVariable String username,
+            @Valid @RequestBody UsuarioRequest request) {
         return ResponseEntity.ok(usuarioService.actualizar(username, request));
     }
 
@@ -39,4 +40,5 @@ public class UsuarioController {
     public ResponseEntity<UsuarioResponse> eliminar(@PathVariable String username) {
         return ResponseEntity.ok(usuarioService.eliminar(username));
     }
+
 }
