@@ -1,6 +1,6 @@
 package com.proyectofinal.auth.exceptions;
 
-import com.josealberto.auth.dto.ErrorResponse;
+import com.proyectofinal.auth.dto.ErrorResponse;
 
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;

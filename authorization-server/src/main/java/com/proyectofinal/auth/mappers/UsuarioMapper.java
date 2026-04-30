@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.josealberto.auth.dto.UsuarioRequest;
-import com.josealberto.auth.dto.UsuarioResponse;
+import com.proyectofinal.auth.dto.UsuarioRequest;
+import com.proyectofinal.auth.dto.UsuarioResponse;
 import com.proyectofinal.auth.entities.Rol;
 import com.proyectofinal.auth.entities.Usuario;
 

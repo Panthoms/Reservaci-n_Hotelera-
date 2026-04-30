@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.josealberto.auth.dto.UsuarioRequest;
-import com.josealberto.auth.dto.UsuarioResponse;
+import com.proyectofinal.auth.dto.UsuarioRequest;
+import com.proyectofinal.auth.dto.UsuarioResponse;
 import com.proyectofinal.auth.services.UsuarioService;
 
 import jakarta.validation.Valid;

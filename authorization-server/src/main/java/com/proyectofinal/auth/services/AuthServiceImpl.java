@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.josealberto.auth.dto.LoginRequest;
-import com.josealberto.auth.dto.TokenResponse;
+import com.proyectofinal.auth.dto.LoginRequest;
+import com.proyectofinal.auth.dto.TokenResponse;
 import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.JWSHeader;
 import com.nimbusds.jose.JWSSigner;

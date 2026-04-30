@@ -8,8 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.josealberto.auth.dto.UsuarioRequest;
-import com.josealberto.auth.dto.UsuarioResponse;
+import com.proyectofinal.auth.dto.UsuarioRequest;
+import com.proyectofinal.auth.dto.UsuarioResponse;
 import com.proyectofinal.auth.entities.Rol;
 import com.proyectofinal.auth.entities.Usuario;
 import com.proyectofinal.auth.mappers.UsuarioMapper;

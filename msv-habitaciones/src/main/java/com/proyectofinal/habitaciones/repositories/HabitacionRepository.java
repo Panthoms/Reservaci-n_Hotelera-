@@ -3,7 +3,6 @@ package com.proyectofinal.habitaciones.repositories;
 import com.proyectofinal.common.enums.EstadoRegistro;
 import com.proyectofinal.habitaciones.entities.Habitaciones;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

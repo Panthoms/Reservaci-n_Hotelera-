@@ -1,7 +1,7 @@
 package com.proyectofinal.auth.services;
 
-import com.josealberto.auth.dto.LoginRequest;
-import com.josealberto.auth.dto.TokenResponse;
+import com.proyectofinal.auth.dto.LoginRequest;
+import com.proyectofinal.auth.dto.TokenResponse;
 
 public interface AuthService {
 

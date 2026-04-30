@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.josealberto.auth.dto.LoginRequest;
-import com.josealberto.auth.dto.TokenResponse;
+import com.proyectofinal.auth.dto.LoginRequest;
+import com.proyectofinal.auth.dto.TokenResponse;
 import com.proyectofinal.auth.services.AuthService;
 
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.josealberto.auth.dto;
+package com.proyectofinal.auth.dto;
 
 public record TokenResponse(
         String token
