@@ -40,7 +40,7 @@ public class ReservacionServiceImpl implements ReservacionService{
                 .map(reservacion ->
                         reservacionMapper.entidadAResponse(
                                 reservacion,
-                                obtenerHuespedSinEstado(reservacion.getIdHuesped()),
+                                obtenerHuespedActivo(reservacion.getIdHuesped()),
                                 obtenerHabitacionActivo(reservacion.getIdHabitaciones())
                         )).toList();
     }
