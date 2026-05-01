@@ -1,12 +1,7 @@
 package com.proyectofinal.huespedes.entities;
 
 import com.proyectofinal.common.enums.EstadoRegistro;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -46,7 +41,8 @@ public class Huesped {
 	@Column(name = "NACIONALIDAD", nullable = false, length = 100)
     private String nacionalidad;
 
-    @Column(name = "ESTADO_REGISTRO", columnDefinition = "VARCHAR2(1)")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ESTADO_REGISTRO")
     private EstadoRegistro estadoRegistro;
 
     public void actualizar(String nombre, String apellidoPaterno, String apellidoMaterno, String email, String telefono, String tipoDocumento, String numeroDocumento) {

@@ -57,6 +57,8 @@ public class Habitaciones {
 				this.getEstadoHabitacion() == EstadoHabitacion.OCUPADA)
 			throw new IllegalStateException(
 					"No se puede cambiar el estado de OCUPADA a DISPONIBLE directamente.");
+
+		this.estadoHabitacion = estadoHabitacion;
 	}
 
 	public void eliminar() {

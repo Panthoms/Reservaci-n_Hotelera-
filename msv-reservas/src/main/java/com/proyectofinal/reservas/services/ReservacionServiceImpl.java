@@ -122,6 +122,13 @@ public class ReservacionServiceImpl implements ReservacionService{
         validarFechaSalida(request);
 
         if(reservas.getEstadoReservacion() == EstadoReservacion.EN_CURSO){
+
+            if (!reservas.getIdHuesped().equals(request.idHuesped())
+                    || !reservas.getIdHabitaciones().equals(request.idHabitaciones())
+                    || !reservas.getFechaIngreso().equals(request.fechaIngreso()))
+                throw new IllegalStateException(
+                        "Una reservación EN_CURSO solo permite modificar la fecha de salida");
+
             reservas.actualizarFechas(
                     request.fechaSalida());
             return reservacionMapper.entidadAResponse(reservas,
