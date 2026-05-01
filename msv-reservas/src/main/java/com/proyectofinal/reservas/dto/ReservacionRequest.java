@@ -18,12 +18,12 @@ public record ReservacionRequest(
 
         @NotNull(message = "La fecha de ingreso es requerida")
         @FutureOrPresent(message = "La fecha de la cita debe ser futura")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
         Date fechaIngreso,
 
         @NotNull(message = "La fecha de salida es requerida")
         @FutureOrPresent(message = "La fecha de la cita debe ser futura")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
         Date fechaSalida,
 
         @Positive(message = "El id del estado de la reservacion debe ser positivo")

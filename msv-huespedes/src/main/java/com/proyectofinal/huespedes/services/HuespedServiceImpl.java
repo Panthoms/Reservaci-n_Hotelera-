@@ -44,6 +44,7 @@ public class HuespedServiceImpl implements HuespedService{
         validarNumeroDocumentoUnica(request.numeroDocumento(),EstadoRegistro.ACTIVO);
 
         Huesped huesped = huespedMapper.requestAEntidad(request);
+        huesped.setEstadoRegistro(EstadoRegistro.ACTIVO);
 
         huespedRepository.save(huesped);
 
