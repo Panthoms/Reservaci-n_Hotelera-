@@ -6,10 +6,11 @@ import com.proyectofinal.common.dto.HuespedResponse;
 import com.proyectofinal.huespedes.services.HuespedService;
 import jakarta.validation.constraints.Positive;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/huesped")
+@Validated
 public class huespedController extends CommonController<HuespedRequest, HuespedResponse, HuespedService> {
     public huespedController(HuespedService service) {
         super(service);
