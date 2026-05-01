@@ -3,6 +3,8 @@ package com.proyectofinal.common.dto;
 public record HuespedResponse(
         Long id,
         String nombre,
+        String apellidoPaterno,
+        String apellidoMaterno,
         String email,
         String telefono,
         String tipoDocumento,
