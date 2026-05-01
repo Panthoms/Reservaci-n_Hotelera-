@@ -61,6 +61,10 @@ public class Habitaciones {
 		this.estadoHabitacion = estadoHabitacion;
 	}
 
+	public void liberarHabitacion() {
+		this.estadoHabitacion = EstadoHabitacion.DISPONIBLE;
+	}
+
 	public void eliminar() {
 		this.estadoRegistro = EstadoRegistro.ELIMINADO;
 	}

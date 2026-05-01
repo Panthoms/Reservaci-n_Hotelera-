@@ -89,6 +89,12 @@ public class HabitacionServiceImpl implements HabitacionService{
     }
 
     @Override
+    public void liberarHabitacion(Long id) {
+        Habitaciones habitaciones = obtenerHabitacionOExcepction(id);
+        habitaciones.liberarHabitacion();
+    }
+
+    @Override
     public void eliminar(Long id) {
         Habitaciones habitaciones = obtenerHabitacionOExcepction(id);
         log.info("Eliminando la habitación con id {}", id);

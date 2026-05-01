@@ -30,5 +30,10 @@ public class HabitacionController extends CommonController<HabitacionRequest, Ha
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}/liberar")
+    public ResponseEntity<Void> liberarHabitacion(@PathVariable Long id) {
+        service.liberarHabitacion(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }
