@@ -10,7 +10,7 @@ public interface ReservacionService extends CrudService<ReservacionRequest,Reser
 
     void habitacionTieneReservacionAsignadas(Long idHabitacion);
 
-    void avtulizarEstadoReservacion(Long idResercas, Long idEstadoReservacion);
+    void actulizarEstadoReservacion(Long idReservas, Long idEstadoReservacion);
 
 
 

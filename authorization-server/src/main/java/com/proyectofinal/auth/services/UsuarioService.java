@@ -9,6 +9,8 @@ public interface UsuarioService {
 
     Set<UsuarioResponse> listar();
 
+    UsuarioResponse actualizar(String username, UsuarioRequest request);
+
     UsuarioResponse registrar(UsuarioRequest request);
 
     UsuarioResponse eliminar(String username);

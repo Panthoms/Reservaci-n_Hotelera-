@@ -1,5 +1,6 @@
 package com.proyectofinal.huespedes.services;
 
+import com.proyectofinal.common.clients.ReservacionClient;
 import com.proyectofinal.common.dto.HuespedRequest;
 import com.proyectofinal.common.dto.HuespedResponse;
 import com.proyectofinal.common.enums.EstadoRegistro;
@@ -23,6 +24,7 @@ public class HuespedServiceImpl implements HuespedService{
 
     private final HuespedRepository huespedRepository;
     private final HuespedMapper huespedMapper;
+    private final ReservacionClient reservacionClient;
 
 
     @Override
@@ -55,6 +57,8 @@ public class HuespedServiceImpl implements HuespedService{
 
         validarActualizarUnicos(request, EstadoRegistro.ACTIVO,id);
 
+        huespedTieneReservacionesAsignadas(id);
+
         huesped.actualizar(
                 request.nombre(),
                 request.apellidoPaterno(),
@@ -76,6 +80,8 @@ public class HuespedServiceImpl implements HuespedService{
         Huesped huesped = huespedRepository.findByIdAndEstadoRegistro(id, EstadoRegistro.ACTIVO)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Huésped no encontrado"));
 
+        huespedTieneReservacionesAsignadas(id);
+
         huesped.setEstadoRegistro(EstadoRegistro.ELIMINADO);
         huespedRepository.save(huesped);
         log.info("Huésped con id: {} eliminado...", id);
@@ -87,6 +93,10 @@ public class HuespedServiceImpl implements HuespedService{
                 .stream()
                 .map(huespedMapper::entidadAResponse)
                 .toList();
+    }
+
+    private void huespedTieneReservacionesAsignadas(Long id){
+        reservacionClient.huespedTieneReservacionesAsignada(id);
     }
 
     private Huesped obtenerHuespedActivoOException(Long id){
