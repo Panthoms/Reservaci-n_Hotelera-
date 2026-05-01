@@ -66,9 +66,43 @@ public class Reservas {
                 + EstadoReservacion.EN_CURSO);
     }
 
-    public void actualizarEstadoReservacion(EstadoReservacion nuevoEstadoReservacion){
-
+    public void actualizarEstadoReservacion(EstadoReservacion nuevoEstado) {
+        switch (this.estadoReservacion) {
+            case CONFIRMADA -> {
+                if (!(nuevoEstado.equals(EstadoReservacion.EN_CURSO)
+                        || nuevoEstado.equals(EstadoReservacion.CANCELADA)
+                        || nuevoEstado.equals(EstadoReservacion.CONFIRMADA)))
+                    throw new IllegalStateException(
+                            "La reservación con estado " + this.estadoReservacion
+                                    + " solo puede cambiar a " + EstadoReservacion.EN_CURSO
+                                    + " o " + EstadoReservacion.CANCELADA);
+            }
+            case EN_CURSO -> {
+                if (!(nuevoEstado.equals(EstadoReservacion.FINALIZADA)
+                        || nuevoEstado.equals(EstadoReservacion.EN_CURSO)))
+                    throw new IllegalStateException(
+                            "La reservación con estado " + this.estadoReservacion
+                                    + " solo puede cambiar a " + EstadoReservacion.FINALIZADA);
+            }
+            case FINALIZADA, CANCELADA -> {
+                if (!nuevoEstado.equals(this.estadoReservacion))
+                    throw new IllegalStateException(
+                            "La reservación en estado " + this.estadoReservacion
+                                    + " no puede cambiar de estado");
+            }
+        }
+        this.estadoReservacion = nuevoEstado;
     }
 
+    public void eliminar() {
+        this.puedeEliminar();
+        this.estadoRegistro = EstadoRegistro.ELIMINADO;
+    }
 
+    private void puedeEliminar() {
+        if (this.estadoReservacion.equals(EstadoReservacion.EN_CURSO)) {
+            throw new IllegalStateException(
+                    "Una reservación con estado " + EstadoReservacion.EN_CURSO + " no se puede eliminar");
+        }
+    }
 }

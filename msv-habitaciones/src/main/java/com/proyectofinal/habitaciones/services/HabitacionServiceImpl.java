@@ -1,5 +1,6 @@
 package com.proyectofinal.habitaciones.services;
 
+import com.proyectofinal.common.clients.ReservacionClient;
 import com.proyectofinal.common.dto.HabitacionRequest;
 import com.proyectofinal.common.dto.HabitacionResponse;
 import com.proyectofinal.common.enums.EstadoHabitacion;
@@ -23,6 +24,7 @@ public class HabitacionServiceImpl implements HabitacionService{
 
     private final HabitacionRepository habitacionRepository;
     private final HabitacionMapoer habitacionMapoer;
+    private final ReservacionClient reservacionClient;
 
     @Override
     public List<HabitacionResponse> listar() {
@@ -62,6 +64,8 @@ public class HabitacionServiceImpl implements HabitacionService{
        Habitaciones habitaciones = obtenerHabitacionOExcepction(id);
        log.info("Actualizando habitación con id: {}", id);
 
+       habitacionTieneReservacionesAsignadas(id);
+
        validarNumeroUnicoId(request, id);
 
        habitaciones.actualizar(
@@ -88,6 +92,8 @@ public class HabitacionServiceImpl implements HabitacionService{
     public void eliminar(Long id) {
         Habitaciones habitaciones = obtenerHabitacionOExcepction(id);
         log.info("Eliminando la habitación con id {}", id);
+
+        habitacionTieneReservacionesAsignadas(id);
 
         habitaciones.eliminar();
         log.info("Habitacion con id {} ha sido eliminada", id);
@@ -116,6 +122,10 @@ public class HabitacionServiceImpl implements HabitacionService{
             habitacionRepository.existsByNumeroHabitacionAndEstadoRegistroAndIdNot(
                     request.numeroHabitacion(), habitaciones.getEstadoRegistro(),id))
             throw new IllegalArgumentException("Ya exoste una habitacion con ese numero registrado");
+    }
+
+    private void habitacionTieneReservacionesAsignadas(Long id){
+        reservacionClient.habitacionTieneReservacionesAsignadas(id);
     }
 
 

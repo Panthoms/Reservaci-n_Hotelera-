@@ -1,4 +1,4 @@
-package com.proyectofinal.huespedes.gateway.configuration;
+package com.proyectofinal.gateway.configuration;
 
 import java.util.List;
 
