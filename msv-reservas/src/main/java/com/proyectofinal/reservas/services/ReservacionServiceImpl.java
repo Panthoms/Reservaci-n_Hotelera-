@@ -98,10 +98,16 @@ public class ReservacionServiceImpl implements ReservacionService{
     }
 
     @Override
-    public void avtulizarEstadoReservacion(Long idResercas, Long idEstadoReservacion) {
+    public void actulizarEstadoReservacion(Long idReservas, Long idEstadoReservacion) {
+        Reservas reservas = obtenerReservacionOException(idReservas);
+        log.info("Actualizando el estado de reservacion con id {} ", idReservas);
 
+        EstadoReservacion estadoReservacion = EstadoReservacion.obtenerDisponibilidadPorCodigo(idEstadoReservacion);
 
+        reservas.actualizarEstadoReservacion(estadoReservacion);
 
+        cambiarEstadoHbitacionSegunEstadoReservacion(reservas.getIdHabitaciones(), reservas.getEstadoReservacion());
+        log.info("Estado de la reservacion {} actualizado correctamente ", reservas.getId());
     }
 
     @Override
@@ -158,7 +164,19 @@ public class ReservacionServiceImpl implements ReservacionService{
 
     @Override
     public void eliminar(Long id) {
+        Reservas reservas = obtenerReservacionOException(id);
+        log.info("Eliminando la reservación con id {}", id);
 
+        reservas.eliminar();
+
+        if (reservas.getEstadoReservacion() == EstadoReservacion.CONFIRMADA) {
+            cambiarEstadoHabitacion(
+                    reservas.getIdHabitaciones(),
+                    EstadoHabitacion.DISPONIBLE.getCodigo()
+            );
+        }
+
+        log.info("La reservación con id {} ha sido eliminada exitosamente", id);
     }
 
     private Reservas obtenerReservacionOException(Long id){

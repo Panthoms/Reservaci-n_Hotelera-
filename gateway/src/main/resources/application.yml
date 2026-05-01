@@ -24,7 +24,7 @@ spring:
                 - StripPrefix=2
 
             - id: msv-huespedes
-              uri: lb://msv-huespedes
+              uri: lb://msv-huespedess
               predicates:
                 - Path=/api/huespedes/**
               filters:
@@ -37,10 +37,10 @@ spring:
               filters:
                 - StripPrefix=2
 
-            - id: msv-reservaciones
-              uri: lb://msv-reservaciones
+            - id: msv-reservas
+              uri: lb://msv-reservas
               predicates:
-                - Path=/api/reservaciones/**
+                - Path=/api/reservas/**
               filters:
                 - StripPrefix=2
 

@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "HABITACION")
+@Table(name = "HABITACIONES")
 @Builder
 public class Habitaciones {
 
