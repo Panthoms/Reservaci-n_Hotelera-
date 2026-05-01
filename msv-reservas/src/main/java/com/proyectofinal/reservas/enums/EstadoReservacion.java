@@ -8,9 +8,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum EstadoReservacion {
     CONFIRMADA(1L, "Reserva creada"),
-    EN_CURSO(2L, "Reserva creada"),
-    FINALIZADA(3L, "Reserva creada"),
-    CANCELADA(4L, "Reserva creada");
+    EN_CURSO(2L, "Check-in realizado"),
+    FINALIZADA(3L, "Check-in realizado"),
+    CANCELADA(4L, "Reserva cancelada");
 
     private final Long codigo;
 

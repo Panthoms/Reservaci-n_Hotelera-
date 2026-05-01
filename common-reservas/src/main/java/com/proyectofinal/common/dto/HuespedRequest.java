@@ -36,5 +36,5 @@ public record HuespedRequest(
         @NotBlank(message = "La nacionalidad es obligatoria")
         @Size(max = 60, message = "La nacionalidad no debe exceder los 60 caracteres")
         String nacionalidad
-
+        
 ) { }

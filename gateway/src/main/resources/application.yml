@@ -24,7 +24,7 @@ spring:
                 - StripPrefix=2
 
             - id: msv-huespedes
-              uri: lb://msv-huespedess
+              uri: lb://msv-huespedes
               predicates:
                 - Path=/api/huespedes/**
               filters:
