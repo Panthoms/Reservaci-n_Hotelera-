@@ -9,4 +9,6 @@ public interface HabitacionService extends CrudService <HabitacionRequest, Habit
     HabitacionResponse optenerPorIdSinEstado(Long id);
 
     void actualizarEstado(Long id, Long idEstadoHabitacion);
+
+    void liberarHabitacion(Long id);
 }

@@ -177,14 +177,11 @@ public class ReservacionServiceImpl implements ReservacionService{
         reservas.eliminar();
 
         if (reservas.getEstadoReservacion() == EstadoReservacion.CONFIRMADA) {
-            cambiarEstadoHabitacion(
-                    reservas.getIdHabitaciones(),
-                    EstadoHabitacion.DISPONIBLE.getCodigo()
-            );
+            habitacionClient.liberarHabitacion(reservas.getIdHabitaciones());
         }
-
         log.info("La reservación con id {} ha sido eliminada exitosamente", id);
     }
+
 
     private Reservas obtenerReservacionOException(Long id){
         log.info("Buscando reservacion con id {} ", id);
